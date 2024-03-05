@@ -1,0 +1,3 @@
+[submodule "nvimhelper"]
+	path = nvimhelper
+	url = https://github.com/chichieinstein/nvimhelper.git
