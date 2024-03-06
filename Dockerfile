@@ -51,9 +51,9 @@ RUN apt-get update -y && apt-get install -y \
     wget \
     xclip
 
-RUN pip install numpt scipy matplotlib 
+RUN pip install numpy scipy matplotlib 
 WORKDIR / 
-RUN wget https://github/com/artempyanykh/marksman/releases/download/2023-12-09/marksman-linux-x64 && \
+RUN wget https://github.com/artempyanykh/marksman/releases/download/2023-12-09/marksman-linux-x64 && \
     mv marksman-linux-x64 marksman && chmod +x marksman && \ 
     mkdir /root/.local && \
     mkdir /root/.local/bin && \
@@ -74,13 +74,15 @@ RUN rm -rf /neovim && \
 ENV NVM_DIR /usr/local/nvm
 ENV NODE_VERSION 21.6.1 
 
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash \
+RUN apt-get install -y curl && \
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash \
     && . $NVM_DIR/nvm.sh \
     && nvm install $NODE_VERSION \
     && nvm alias default $NODE_VERSION \
     && nvm use default \ 
     && npm install -g pyright \
     && pip install autopep8
-    
+  
+ENV XDG_CONFIG_HOME="/root/dev_config"
 
 
