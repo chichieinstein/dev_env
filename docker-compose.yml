@@ -16,14 +16,16 @@ services:
       - nw 
     ports:
       - 127.0.0.1::5901
+    devices:
+      - nvidia.com/gpu=0
+      - nvidia.com/gpu=1
+      - nvidia.com/gpu=2
+      - nvidia.com/gpu=3
     deploy:
       resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 3
-              capabilities: [gpu]
-
+        limits:
+          cpus: '48'
+          memory: 250G  
     working_dir: "/root/ProjectDir"
     command: ["tail", "-f", "/dev/null"]
     cap_add:
