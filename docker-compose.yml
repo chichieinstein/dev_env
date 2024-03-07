@@ -9,7 +9,7 @@ services:
     shm_size: '2048m'
     volumes:
       - "${PROJECT_LOCATION}:/root/ProjectDir:rw"
-      - "./nvimhelper/dev_config:/root/dev_config:rw"
+      - "./nvimhelper/dev_config:/root/.config/dev_config:rw"
       - "./nvimhelper/setup_project.py:/root/setup_project.py:rw"
       - "~/.ssh:/root/.ssh:rw"
     networks:

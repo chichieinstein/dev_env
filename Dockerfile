@@ -81,8 +81,10 @@ RUN apt-get install -y curl && \
     && nvm alias default $NODE_VERSION \
     && nvm use default \ 
     && npm install -g pyright \
-    && pip install autopep8
+    && pip install autopep8 \
+    && mkdir -p /root/.config
   
-ENV XDG_CONFIG_HOME="/root/dev_config"
+ENV XDG_CONFIG_HOME="/root/.config"
+ENV NVIM_APPNAME="dev_config/nvim"
 
 
