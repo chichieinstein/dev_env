@@ -88,7 +88,8 @@ RUN git clone https://github.com/catchorg/Catch2.git && \
     cd Catch2 && \
     cmake -B build -S . -DBUILD_TESTING=OFF && \
     cmake --build build/ --target install 
-  
+
+WORKDIR /  
 ENV XDG_CONFIG_HOME="/root/.config"
 ENV NVIM_APPNAME="dev_config/nvim"
 
