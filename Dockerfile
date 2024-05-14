@@ -89,8 +89,11 @@ RUN git clone https://github.com/catchorg/Catch2.git && \
     cmake -B build -S . -DBUILD_TESTING=OFF && \
     cmake --build build/ --target install 
 
+RUN apt-get install -y valgrind 
+
 WORKDIR /  
 ENV XDG_CONFIG_HOME="/root/.config"
 ENV NVIM_APPNAME="dev_config/nvim"
 
-
+RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 \
+    && pip install lightning
