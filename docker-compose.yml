@@ -12,8 +12,10 @@ services:
       - "./nvimhelper/dev_config:/root/.config/dev_config:rw"
       - "./nvimhelper/setup_project.py:/root/setup_project.py:rw"
       - "~/.ssh:/root/.ssh:rw"
-    networks:
-      - nw 
+      - "/tmp/.X11-unix:/tmp/.X11-unix"
+    environment:
+      - DISPLAY=${DISPLAY}
+    network_mode: 'host'
     ports:
       - 127.0.0.1::5901
     devices:

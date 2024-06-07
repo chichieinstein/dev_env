@@ -96,6 +96,4 @@ ENV XDG_CONFIG_HOME="/root/.config"
 ENV NVIM_APPNAME="dev_config/nvim"
 
 RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 \ 
-    && pip install lightning einops
-
-RUN apt-get update -y && apt-get install -y iputils-ping
+    && pip install lightning einops scikit-learn pandas
