@@ -7,22 +7,24 @@ services:
     image: dev-env 
     container_name: dev-env 
     shm_size: '2048m'
+    environment:
+      - DISPLAY=${DISPLAY}
+      - BACKEND_STORE_URI=${BACKEND_STORE_URI}      
+      - ARTIFACT_ROOT=${ARTIFACT_ROOT}
     volumes:
       - "${PROJECT_LOCATION}:/root/ProjectDir:rw"
       - "./nvimhelper/dev_config:/root/.config/dev_config:rw"
       - "./nvimhelper/setup_project.py:/root/setup_project.py:rw"
       - "~/.ssh:/root/.ssh:rw"
       - "/tmp/.X11-unix:/tmp/.X11-unix"
-    environment:
-      - DISPLAY=${DISPLAY}
+      - "${ARTIFACT_ROOT}:${ARTIFACT_ROOT}:rw" 
     network_mode: 'host'
     ports:
-      - 127.0.0.1::5901
+      - "5000:5000"
     devices:
       - nvidia.com/gpu=0
       - nvidia.com/gpu=1
       - nvidia.com/gpu=2
-      - nvidia.com/gpu=3
     deploy:
       resources:
         limits:
