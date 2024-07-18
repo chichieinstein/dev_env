@@ -9,7 +9,6 @@ services:
     shm_size: '2048m'
     environment:
       - DISPLAY=${DISPLAY}
-      - BACKEND_STORE_URI=${BACKEND_STORE_URI}      
       - ARTIFACT_ROOT=${ARTIFACT_ROOT}
     volumes:
       - "${PROJECT_LOCATION}:/root/ProjectDir:rw"
