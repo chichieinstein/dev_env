@@ -19,12 +19,13 @@ else
 fi 
 
 if [ "$#" -ne 2 ]; then 
-    echo "Usage: $0 <Project_directory> <artifact_root>"
+    echo "Usage: $0 <Project_directory> <absolute_artifact_root_path>"
     exit 1 
 fi 
 
 db_directory=$1
 artifact_root=$2
+artifact_root="file://${artifact_root}"
 
 if [ ! -d "$db_directory" ]; then 
     echo "Error : Directory $db_directory does not exist."
